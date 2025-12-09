@@ -574,8 +574,9 @@ pub(crate) fn init_telemetry(config: &OtelConfig) -> Result<OtelGuard, Telemetry
     }
 
     // Rule 2: The user has explicitly customized the log directory (determined by whether ENV_OBS_LOG_DIRECTORY is set)
-    let user_set_log_dir = get_env_opt_str(ENV_OBS_LOG_DIRECTORY);
-    if user_set_log_dir.filter(|d| !d.is_empty()).is_some() {
+    let user_set_log_dir_opt = get_env_opt_str(ENV_OBS_LOG_DIRECTORY);
+    println!("User set log directory: '{:?}'", user_set_log_dir_opt);
+    if user_set_log_dir_opt.filter(|d| !d.is_empty()).is_some() {
         return init_file_logging(config, logger_level, is_production);
     }
 
