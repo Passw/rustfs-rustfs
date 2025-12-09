@@ -23,7 +23,6 @@ use rustfs_config::{
     DEFAULT_OBS_LOG_FILENAME, DEFAULT_OBS_LOG_STDOUT_ENABLED, ENVIRONMENT, METER_INTERVAL, SAMPLE_RATIO, SERVICE_VERSION,
     USE_STDOUT,
 };
-use rustfs_utils::dirs::get_log_directory_to_string;
 use rustfs_utils::{get_env_bool, get_env_f64, get_env_opt_str, get_env_str, get_env_u64, get_env_usize};
 use serde::{Deserialize, Serialize};
 use std::env;
@@ -106,7 +105,7 @@ impl OtelConfig {
             environment: Some(get_env_str(ENV_OBS_ENVIRONMENT, ENVIRONMENT)),
             logger_level: Some(get_env_str(ENV_OBS_LOGGER_LEVEL, DEFAULT_LOG_LEVEL)),
             log_stdout_enabled: Some(get_env_bool(ENV_OBS_LOG_STDOUT_ENABLED, DEFAULT_OBS_LOG_STDOUT_ENABLED)),
-            log_directory: Some(get_log_directory_to_string(ENV_OBS_LOG_DIRECTORY)),
+            log_directory: get_env_opt_str(ENV_OBS_LOG_DIRECTORY),
             log_filename: Some(get_env_str(ENV_OBS_LOG_FILENAME, DEFAULT_OBS_LOG_FILENAME)),
             log_rotation_size_mb: Some(get_env_u64(ENV_OBS_LOG_ROTATION_SIZE_MB, DEFAULT_LOG_ROTATION_SIZE_MB)), // Default to 100 MB
             log_rotation_time: Some(get_env_str(ENV_OBS_LOG_ROTATION_TIME, DEFAULT_LOG_ROTATION_TIME)), // Default to "Hour"
