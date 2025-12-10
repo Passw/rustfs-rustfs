@@ -15,6 +15,7 @@
 use crate::last_minute::{AccElem, LastMinuteLatency};
 use chrono::{DateTime, Utc};
 use rustfs_madmin::metrics::ScannerMetrics as M_ScannerMetrics;
+use serde::{Deserialize, Serialize};
 use std::{
     collections::HashMap,
     fmt::Display,
@@ -261,11 +262,23 @@ pub struct Metrics {
 }
 
 // This is a placeholder. We'll need to define this struct.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct CurrentCycle {
     pub current: u64,
+    pub next: u64,
     pub cycle_completed: Vec<DateTime<Utc>>,
     pub started: DateTime<Utc>,
+}
+
+impl CurrentCycle {
+    pub fn unmarshal(&mut self, buf: &[u8]) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+        *self = rmp_serde::from_slice(buf)?;
+        Ok(())
+    }
+
+    pub fn marshal(&self) -> Result<Vec<u8>, Box<dyn std::error::Error + Send + Sync>> {
+        Ok(rmp_serde::to_vec(self)?)
+    }
 }
 
 impl Metrics {

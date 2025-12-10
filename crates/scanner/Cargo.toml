@@ -48,6 +48,8 @@ path-clean = { workspace = true }
 rmp-serde = { workspace = true }
 rustfs-filemeta = { workspace = true }
 rustfs-madmin = { workspace = true }
+tokio-util = { workspace = true }
+rustfs-ecstore  = { workspace = true }
 
 [dev-dependencies]
 tokio-test = { workspace = true }
