@@ -12,18 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use path_clean::PathClean;
-use serde::{Deserialize, Serialize};
-use std::{
-    collections::{HashMap, HashSet},
-    hash::{DefaultHasher, Hash, Hasher},
-    path::Path,
-    sync::LazyLock,
-    time::SystemTime,
-};
-
 use rustfs_ecstore::disk::{BUCKET_META_PREFIX, RUSTFS_META_BUCKET};
 use rustfs_utils::path::SLASH_SEPARATOR;
+use std::sync::LazyLock;
 
 // Data usage constants
 pub const DATA_USAGE_ROOT: &str = SLASH_SEPARATOR;
