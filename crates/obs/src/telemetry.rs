@@ -41,7 +41,7 @@ use rustfs_config::{
 };
 use rustfs_utils::{get_env_opt_str, get_env_u64, get_env_usize, get_local_ip_with_default};
 use smallvec::SmallVec;
-use std::{borrow::Cow, env, fs, io::IsTerminal, time::Duration};
+use std::{borrow::Cow, fs, io::IsTerminal, time::Duration};
 use tracing::info;
 use tracing_error::ErrorLayer;
 use tracing_opentelemetry::{MetricsLayer, OpenTelemetryLayer};
