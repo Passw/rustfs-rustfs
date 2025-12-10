@@ -7559,6 +7559,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "rustfs-scanner"
+version = "0.0.5"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "chrono",
+ "futures",
+ "path-clean",
+ "rmp-serde",
+ "rustfs-common",
+ "rustfs-config",
+ "rustfs-filemeta",
+ "rustfs-madmin",
+ "rustfs-utils",
+ "serde",
+ "serde_json",
+ "serial_test",
+ "tempfile",
+ "thiserror 2.0.17",
+ "time",
+ "tokio",
+ "tokio-test",
+ "tracing",
+ "tracing-subscriber",
+ "uuid",
+]
+
+[[package]]
 name = "rustfs-signer"
 version = "0.0.5"
 dependencies = [
